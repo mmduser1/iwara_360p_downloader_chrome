@@ -14,9 +14,10 @@ function getInfo(){
   var username = info.getElementsByTagName('a');
 
   var link_url = "";
-  if(typeof links[2].href !== undefined){
+  console.info(links[2]);
+  if(typeof links[2] !== "undefined"){
     link_url = links[2].href;
-  } else if(typeof links[1].href !== undefined) {
+  } else if(typeof links[1] !== "undefined") {
     link_url = links[1].href;
   } else {
     link_url = links[0].href;
