@@ -12,7 +12,7 @@ function getInfo(){
   var info = document.getElementsByClassName('node-info')[0];
   var title = info.getElementsByTagName('h1');
   var username = info.getElementsByTagName('img');
-  username = username[0].title.replace("ユーザー ","").replace(" の写真","")
+  username = username[0].title.replace("ユーザー ","").replace(" の写真","");
 
   var link_url = "";
   console.info(links[2]);
