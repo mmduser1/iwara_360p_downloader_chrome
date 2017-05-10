@@ -11,7 +11,8 @@ function getInfo(){
   var links = document.getElementById("download-options").getElementsByTagName('a');
   var info = document.getElementsByClassName('node-info')[0];
   var title = info.getElementsByTagName('h1');
-  var username = info.getElementsByTagName('a');
+  var username = info.getElementsByTagName('img');
+  username = username[0].title.replace("ユーザー ","").replace(" の写真","")
 
   var link_url = "";
   console.info(links[2]);
@@ -25,7 +26,7 @@ function getInfo(){
   chrome.runtime.sendMessage({
     source_url: link_url,
     title: convertSafeFileName(title[0].innerHTML),
-    username: convertSafeFileName(username[1].innerHTML)
+    username: convertSafeFileName(username)
   });
 }
 
@@ -48,7 +49,7 @@ function convertSafeFileName(titleOrUsername){
     .replace(/"/g,'”')
     .replace(/</g,'＜')
     .replace(/>/g,'＞')
-    .replace(/\|/g,'｜').replace(/~/g,'～');
+    .replace(/\|/g,'｜').replace(/~/g,'～').replace(/\./g,'．');
 }
 
 /**
