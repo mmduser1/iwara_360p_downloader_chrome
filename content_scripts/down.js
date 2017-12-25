@@ -22,6 +22,10 @@ function getInfo(){
   } else {
     username = username[0].title.replace("Bild des Benutzers ", "");
   }
+  var posted_date = info.textContent.match(/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/);
+  if(posted_date !== null){
+    posted_date = posted_date[0].replace(/-/g, "").replace(/:/g, "").replace(" ","");
+  }
 
   var link_url = "";
   if(typeof links[2] !== "undefined"){
@@ -34,7 +38,8 @@ function getInfo(){
   chrome.runtime.sendMessage({
     source_url: link_url,
     title: convertSafeFileName(title[0].innerHTML),
-    username: convertSafeFileName(username)
+    username: convertSafeFileName(username),
+    posted_date: posted_date
   });
 }
 
